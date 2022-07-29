@@ -6,7 +6,8 @@ urlpatterns = [
     path('',views.hello),
     path('one',views.haiThere),
     path('two',views.show),
-    path('log',views.logging)
+    path('log',views.logging),
+    path('new',views.callCreate)
     
 ]
 

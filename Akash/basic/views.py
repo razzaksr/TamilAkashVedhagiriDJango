@@ -1,10 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from . import forms
 
 # Create your views here.
 
-
-    
+def callCreate(req):
+    obj=forms.GameForm()
+    return render(req,"create.html",{"hey":obj})
 
 def logging(req):
     if req.method=="POST":
