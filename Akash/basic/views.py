@@ -5,8 +5,18 @@ from . import forms
 # Create your views here.
 
 def callCreate(req):
-    obj=forms.GameForm()
-    return render(req,"create.html",{"hey":obj})
+    if req.method=="POST":
+        object=forms.GameForm(req.POST)
+        if object.is_valid():
+            object.save()    
+            #return render("/giri/new")
+            obj=forms.GameForm()
+            return render(req,"create.html",{"hey":obj,"info":"New game added"})
+        else:
+            return render(req,"create.html",{"hey":object,"info":"New game not added"})
+    else:
+        obj=forms.GameForm()
+        return render(req,"create.html",{"hey":obj,"info":"New game"})
 
 def logging(req):
     if req.method=="POST":

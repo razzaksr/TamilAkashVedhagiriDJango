@@ -2,11 +2,9 @@
 {% load crispy_forms_tags %}
 {%block userdata%}
 <p class="display-4 text-center text-primary">New Game Record</p>
-<form action="" method="POST">
+{{info}}
+<form action="/giri/new" method="POST">
     {%csrf_token%}
-    <div class="col-lg-12 col-sm-12">
-        {{hey.id |as_crispy_field}}
-    </div>
     <div class="row">
         <div class="col-lg-6 col-sm-12">
             {{hey.name |as_crispy_field}}
@@ -17,6 +15,9 @@
     </div>
     <div class="col-lg-12 col-sm-12">
         {{hey.topplayer |as_crispy_field}}
+    </div>
+    <div class="col-lg-12 col-sm-12">
+        {{hey.device |as_crispy_field}}
     </div>
     <div class="row justify-content-around mt-3">
         <button class="col-2 btn btn-outline-primary">
