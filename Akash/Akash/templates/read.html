@@ -1,0 +1,16 @@
+{% extends 'home.html' %}
+{% block userdata %}
+{% load crispy_forms_tags %}
+<p class="display-4 text-center text-primary">Game Details</p>
+    <div class="card bg-info text-light">
+        <h1 class="card-title text-center">Name of the game {{single.name}}</h1>
+        <div class="card-body">
+            <p class="floart-start">{{single.id}}</p>
+            <p class="float-end">{{single.topplayer}}</p>
+        </div>
+        <div class="card-body">
+            <p class="float-start">{{single.device}}</p>
+            <p class="float-end">{{single.year}}</p>
+        </div>
+    </div>
+{%endblock userdata%}

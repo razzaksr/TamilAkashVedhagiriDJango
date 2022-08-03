@@ -1,0 +1,48 @@
+{% extends 'home.html' %}
+{% block userdata %}
+{% load crispy_forms_tags %}
+<p class="display-4 text-center text-primary">Game Records</p>
+    <a class="btn btn-primary" href="/giri/new"><p class="text-center">New Game</p></a>
+    <div class="table-responsive-lg">
+        <table class="table table-striped p-3 text-nowrap shadow">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Game Name</th>
+                    <th>Released year</th>
+                    <th>Supported Devices</th>
+                    <th>Top player</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%if mylist%}
+                    {%for x in mylist%}
+                        <tr>
+                            <td>
+                                <a href="/giri/{{x.id}}" class="link-success text-decoration-none">
+                                    {{x.id}}
+                                </a>
+                            </td>
+                            <td>{{x.name}}</td>
+                            <td>{{x.year}}</td>
+                            <td>{{x.device}}</td>
+                            <td>{{x.topplayer}}</td>
+                            <td>
+                                <a href="/giri/edit/{{x.id}}" class="btn btn-outline-warning">
+                                    <i class="col-1 bi bi-pencil-square"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-danger">
+                                    <i class="col-1 bi bi-trash3-fill"></i>
+                                </a>
+                            </td>
+                            </td>
+                        </tr> 
+                    {%endfor%}
+                {%endif%}
+            </tbody>
+        </table>
+    </div> 
+{% endblock userdata %}
