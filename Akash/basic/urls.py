@@ -7,11 +7,11 @@ urlpatterns = [
     path('one',views.haiThere),
     path('two',views.show),
     path('log',views.logging),
-    path('new',views.callCreateOrEdit),
+    path('new',views.callCreate),
     path('',views.callList),
+    path('edit/<int:theone>',views.callEdit),
     path('<int:which>',views.callRead),
-    path('edit/<int:theone>',views.callCreateOrEdit)
-    
+    path('del/<int:key>',views.callDelete)
 ]
 
 '''path('log',views.logging),

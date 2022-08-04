@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {%block userdata%}
 <p class="display-4 text-center text-primary">{{title}}</p>
-<form action="/giri/new" method="POST">
+<form method="POST">
     {%csrf_token%}
     <div class="row">
         <div class="col-lg-6 col-sm-12">

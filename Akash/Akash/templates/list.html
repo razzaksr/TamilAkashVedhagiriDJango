@@ -2,9 +2,11 @@
 {% block userdata %}
 {% load crispy_forms_tags %}
 <p class="display-4 text-center text-primary">Game Records</p>
-    <a class="btn btn-primary" href="/giri/new"><p class="text-center">New Game</p></a>
+    <a class="btn btn-primary mb-3" href="/giri/new">
+        <i class="bi bi-plus-circle"></i> Add new Game
+    </a>
     <div class="table-responsive-lg">
-        <table class="table table-striped p-3 text-nowrap shadow">
+        <table class="p-5 table table-striped text-nowrap shadow">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -34,7 +36,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a class="btn btn-outline-danger">
+                                <a href="/giri/del/{{x.id}}" class="btn btn-outline-danger">
                                     <i class="col-1 bi bi-trash3-fill"></i>
                                 </a>
                             </td>
