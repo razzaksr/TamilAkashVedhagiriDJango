@@ -6,6 +6,28 @@ from . import forms
 
 # Create your views here.
 
+def callShort(req):
+    if req.method=="POST":
+        data=[]
+        yr=req.POST['year']
+        dv=req.POST['device']
+        pl=req.POST['player']
+        if yr!="" and dv=="" and pl=="":
+            print("BAsed on released year")
+            yr=int(yr)
+            data=models.Game.objects.filter(year__gte=yr)
+        elif yr=="" and dv!="" and pl=="":
+            print("BAsed on device")
+            data=models.Game.objects.filter(device__icontains=dv)
+        elif yr=="" and dv=="" and pl!="":
+            print("BAsed on player")
+            data=models.Game.objects.filter(topplayer__icontains=pl)
+        else:
+            print("invalid")
+        return render(req,"list.html",{"mylist":data})
+    else:
+        return render(req,"shortlist.html")
+
 def callDelete(req,key):
     obj=get_object_or_404(models.Game,id=key)
     models.Game.delete(obj)

@@ -11,7 +11,8 @@ urlpatterns = [
     path('',views.callList),
     path('edit/<int:theone>',views.callEdit),
     path('<int:which>',views.callRead),
-    path('del/<int:key>',views.callDelete)
+    path('del/<int:key>',views.callDelete),
+    path('short',views.callShort)
 ]
 
 '''path('log',views.logging),

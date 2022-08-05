@@ -1,0 +1,30 @@
+{%extends 'home.html'%}
+{%block userdata%}
+    {%load crispy_forms_tags%}
+    <p class="text-center display-1 text-warning">Short list games</p>
+    <form method="POST">
+        {%csrf_token%}
+        <div class="form group">
+            <label>Released year</label>
+            <input type="text" name="year" placeholder="Released year" class="form-control"/>
+        </div>
+        <p class="text-center display-3">OR</p>
+        <div class="form group">
+            <label>Supporting devices</label>
+            <input type="text" name="device" placeholder="Supporting devices" class="form-control"/>
+        </div>
+        <p class="text-center display-3">OR</p>
+        <div class="form group">
+            <label>Player</label>
+            <input type="text" name="player" placeholder="Desired player" class="form-control"/>
+        </div>
+        <div class="mt-3 row justify-content-around">
+            <button class="col-1 btn btn-outline-success">
+                <i class="bi bi-search"></i>
+            </button>
+            <button class="col-1 btn btn-outline-danger">
+                <i class="bi bi-x-circle"></i>
+            </button>
+        </div>
+    </form>
+{%endblock userdata%}
