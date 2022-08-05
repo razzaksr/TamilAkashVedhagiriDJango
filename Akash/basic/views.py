@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.views.decorators.cache import cache_control
 from django.shortcuts import get_object_or_404, redirect, render
 
 from . import models
@@ -12,8 +13,9 @@ def callOut(req):
         del req.session['authoriser']
         return redirect("/giri/")
     else:
-        return redirect("/giri/")
+        return render(req,'login.html')
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True,expires=0)
 def callShort(req):
     if req.session.has_key('authoriser'):
         if req.method=="POST":
@@ -39,6 +41,7 @@ def callShort(req):
     else:
         return render(req,'login.html')
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True,expires=0)
 def callDelete(req,key):
     if req.session.has_key('authoriser'):
         obj=get_object_or_404(models.Game,id=key)
@@ -47,6 +50,8 @@ def callDelete(req,key):
     else:
         return render(req,'login.html')
 
+
+@cache_control(no_cache=True,must_revalidate=True,no_store=True,expires=0)
 def callEdit(request,theone):
     if request.session.has_key('authoriser'):
         if request.method=="POST":
@@ -71,7 +76,8 @@ def callEdit(request,theone):
             return render(request,"edit.html",{"hey":exist,"title":"Update existing game"})
     else:
         return render(request,'login.html')
-    
+
+@cache_control(no_cache=True,must_revalidate=True,no_store=True,expires=0)   
 def callRead(req,which):
     if req.session.has_key('authoriser'):
         obj=models.Game.objects.get(id=which)
@@ -79,6 +85,7 @@ def callRead(req,which):
     else:
         return render(req,'login.html')
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True,expires=0)
 def callList(req):
     if req.session.has_key('authoriser'):
         obj=models.Game.objects.all()
@@ -110,7 +117,10 @@ def callList(req):
 #         else:
 #             obj=forms.GameForm()
 #             return render(req,"create.html",{"hey":obj,"title":"New game creation"})
+
+
     # for save alone
+@cache_control(no_cache=True,must_revalidate=True,no_store=True,expires=0)
 def callCreate(req):
     if req.session.has_key('authoriser'):
         if req.method=="POST":
@@ -127,6 +137,7 @@ def callCreate(req):
     else:
         return render(req,"login.html")
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True,expires=0)
 def logging(req):
     if req.method=="POST":
         u=req.POST['username']
